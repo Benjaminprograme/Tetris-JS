@@ -1,0 +1,31 @@
+body{
+    background-color: black;
+}
+
+#tetrisBoard{
+    background-color: aliceblue;
+    
+margin: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    border-color: beige;
+    border-style: solid;
+    border-width: 1px;
+
+    height: 718px;
+    width: 300px;
+}
+
+.cube{
+    background-color: rgb(182, 182, 182);
+    
+    border-color: rgb(0, 0, 0);
+    border-style:solid;
+    border-width: 1px;
+
+    height: 28px;
+    width: 28px;
+}
