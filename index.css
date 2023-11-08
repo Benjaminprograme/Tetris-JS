@@ -19,7 +19,26 @@ margin: auto;
     width: 300px;
 }
 
-.cube{
+#nextShape{
+    background-color: aliceblue;
+    
+margin: auto;
+margin-bottom: 120px;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    border-color: beige;
+    border-style: solid;
+    border-width: 1px;
+
+    height: 90px;
+    width: 120px;
+}
+
+
+.cube,.cube2{
     background-color: rgb(182, 182, 182);
     
     border-color: rgb(0, 0, 0);
@@ -28,4 +47,9 @@ margin: auto;
 
     height: 28px;
     width: 28px;
+}
+
+#nextShapeText{
+    font-family: 'Courier New', Courier, monospace;
+  
 }

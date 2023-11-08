@@ -1,9 +1,10 @@
 Create board(done)
 Create all the shapes at random and give them random colores(done)
 Sync the board data to the visual board look(done)
-Create the board that shows the next shape
+Create the board that shows the next shape(done)
 Make the shapes fall down
 Allow the player to conntorle the shapes
 Clear the lanes when shapes are alliend
 Check forr a lose
 Make the game viusaly apiling 
+Add save score feture
