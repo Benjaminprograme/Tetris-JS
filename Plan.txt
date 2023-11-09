@@ -5,6 +5,6 @@ Create the board that shows the next shape(done)
 Make the shapes fall down
 Allow the player to conntorle the shapes
 Clear the lanes when shapes are alliend
-Check forr a lose
+Check for a lose
 Make the game viusaly apiling 
 Add save score feture
