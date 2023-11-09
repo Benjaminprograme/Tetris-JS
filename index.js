@@ -205,7 +205,7 @@ function createS() {
 let cubes = document.getElementsByClassName("cube");
 
 function visualeBoard() {
-  for (i = 0; i < 256; i++) {
+  for (i = 0; i < 240; i++) {
     if (board[i] != null) {
       if (board[i] == 1) {
         cubes[i].style.backgroundColor = "red";
@@ -216,6 +216,8 @@ function visualeBoard() {
       } else if (board[i] == 4) {
         cubes[i].style.backgroundColor = "yellow";
       }
+    } else if (board[i] == null) {
+      cubes[i].style.backgroundColor = "gray";
     }
   }
 }
@@ -271,3 +273,29 @@ function syncOrderOfShapes() {
     createZ_N();
   }
 }
+
+let takenFields = [];
+
+for (i = 0; i < 240; i++) {
+  takenFields[i] = false;
+}
+
+function applyGravity() {
+  for (i = 240; i > 0; i--) {
+    if (
+      board[i] != null &&
+      board[i + 10] == null &&
+      takenFields[i] == false &&
+      takenFields[i + 10] == false
+    ) {
+      board[i + 10] = board[i];
+      board[i] = null;
+    }
+    if (i >= 230 && board[i] != null) {
+      takenFields[i] = true;
+    }
+  }
+  visualeBoard();
+}
+
+setInterval(applyGravity, 900);
