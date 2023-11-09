@@ -1,55 +1,54 @@
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
 
-#tetrisBoard{
-    background-color: aliceblue;
-    
-margin: auto;
+#tetrisBoard {
+  background-color: aliceblue;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  margin: auto;
 
-    border-color: beige;
-    border-style: solid;
-    border-width: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 
-    height: 718px;
-    width: 300px;
+  border-color: beige;
+  border-style: solid;
+  border-width: 1px;
+
+  height: 718px;
+  width: 300px;
 }
 
-#nextShape{
-    background-color: aliceblue;
-    
-margin: auto;
-margin-bottom: 120px;
+#nextShapeBoard {
+  background-color: aliceblue;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  margin: auto;
+  margin-bottom: 120px;
 
-    border-color: beige;
-    border-style: solid;
-    border-width: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 
-    height: 90px;
-    width: 120px;
+  border-color: beige;
+  border-style: solid;
+  border-width: 1px;
+
+  height: 90px;
+  width: 120px;
 }
 
+.cell,
+.nextShapeSegment {
+  background-color: rgb(182, 182, 182);
 
-.cube,.cube2{
-    background-color: rgb(182, 182, 182);
-    
-    border-color: rgb(0, 0, 0);
-    border-style:solid;
-    border-width: 1px;
+  border-color: rgb(0, 0, 0);
+  border-style: solid;
+  border-width: 1px;
 
-    height: 28px;
-    width: 28px;
+  height: 28px;
+  width: 28px;
 }
 
-#nextShapeText{
-    font-family: 'Courier New', Courier, monospace;
-  
+#nextShapeText {
+  font-family: "Courier New", Courier, monospace;
 }

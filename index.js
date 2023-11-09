@@ -1,130 +1,145 @@
 let randomColor = Math.floor(Math.random() * 4) + 1; //1=red,2=green,3=blue,4=yellow
-const spawnPoint_N = 1;
-const spawnPoint = 5;
+const nextShapeSpawnPoint = 1;
+const boardSpawnPoint = 5;
 
-//Create board that show the next piece
-let nextShapeBoard = [];
+let nextShapeSegments = [];
+
 for (i = 0; i < 16; i++) {
   let cube = document.createElement("div");
-  const nextShape = document.getElementById("nextShape");
+  const nextShape = document.getElementById("nextShapeBoard");
 
-  cube.className = "cube2";
-  cube.innerText = i;
+  cube.className = "nextShapeSegment";
+  cube.innerText = i; //TESTING
+
   nextShape.appendChild(cube);
-  nextShapeBoard.unshift(null);
+  nextShapeSegments.unshift(null);
 }
 
-let cubes2 = document.getElementsByClassName("cube2");
+let nextShapeSegment = document.getElementsByClassName("nextShapeSegment");
 
 function visualeNextShape() {
   for (i = 0; i < 16; i++) {
-    if (nextShapeBoard[i] != null) {
-      if (nextShapeBoard[i] == 1) {
-        cubes2[i].style.backgroundColor = "red";
-      } else if (nextShapeBoard[i] == 2) {
-        cubes2[i].style.backgroundColor = "green";
-      } else if (nextShapeBoard[i] == 3) {
-        cubes2[i].style.backgroundColor = "blue";
-      } else if (nextShapeBoard[i] == 4) {
-        cubes2[i].style.backgroundColor = "yellow";
+    if (nextShapeSegments[i] != null) {
+      if (nextShapeSegments[i] == 1) {
+        nextShapeSegment[i].style.backgroundColor = "red";
+      } else if (nextShapeSegments[i] == 2) {
+        nextShapeSegment[i].style.backgroundColor = "green";
+      } else if (nextShapeSegments[i] == 3) {
+        nextShapeSegment[i].style.backgroundColor = "blue";
+      } else if (nextShapeSegments[i] == 4) {
+        nextShapeSegment[i].style.backgroundColor = "yellow";
       }
     }
-    if (nextShapeBoard[i] == null) {
-      cubes2[i].style.backgroundColor = "rgb(182, 182, 182)";
+
+    if (nextShapeSegments[i] == null) {
+      nextShapeSegment[i].style.backgroundColor = "rgb(182, 182, 182)";
     }
   }
 }
 
-function createI_N() {
+function nextI() {
   for (i = 0; i < 4; i++) {
-    nextShapeBoard[spawnPoint_N + 4 * i] = randomColor;
+    nextShapeSegments[nextShapeSpawnPoint + 4 * i] = randomColor;
   }
+
   visualeNextShape();
 }
 
-function createJ_N() {
-  for (i = 0; i < 4; i++) {
-    if (i <= 2) {
-      nextShapeBoard[spawnPoint_N + 4 * i] = randomColor;
-    } else {
-      nextShapeBoard[spawnPoint_N + 4 * (i - 1) - 1] = randomColor;
-    }
-  }
-  visualeNextShape();
-}
-
-function createL_N() {
+function nextJ() {
   for (i = 0; i < 4; i++) {
     if (i <= 2) {
-      nextShapeBoard[spawnPoint_N + 4 * i] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 4 * i] = randomColor;
     } else {
-      nextShapeBoard[spawnPoint_N + 4 * (i - 1) + 1] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 4 * (i - 1) - 1] = randomColor;
     }
   }
+
   visualeNextShape();
 }
 
-function createO_N() {
+function nextN() {
+  for (i = 0; i < 4; i++) {
+    if (i <= 2) {
+      nextShapeSegments[nextShapeSpawnPoint + 4 * i] = randomColor;
+    } else {
+      nextShapeSegments[nextShapeSpawnPoint + 4 * (i - 1) + 1] = randomColor;
+    }
+  }
+
+  visualeNextShape();
+}
+
+function nextO() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      nextShapeBoard[spawnPoint_N + i] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + i] = randomColor;
     } else {
-      nextShapeBoard[spawnPoint_N + 4 + (i - 2)] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 4 + (i - 2)] = randomColor;
     }
   }
+
   visualeNextShape();
 }
 
-function createZ_N() {
+function nextZ() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      nextShapeBoard[spawnPoint_N + i] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + i] = randomColor;
     } else {
-      nextShapeBoard[spawnPoint_N + 4 + (i - 2) + 1] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 4 + (i - 2) + 1] = randomColor;
     }
   }
+
   visualeNextShape();
 }
 
-function createT_N() {
+function nextT() {
   for (i = 0; i < 4; i++) {
     if (i == 0) {
-      nextShapeBoard[spawnPoint_N] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint] = randomColor;
     } else {
-      nextShapeBoard[spawnPoint_N + 2 + i] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 2 + i] = randomColor;
     }
   }
+
   visualeNextShape();
 }
 
-function createS_N() {
+function nextS() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      nextShapeBoard[spawnPoint_N + i] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + i] = randomColor;
     } else {
-      nextShapeBoard[spawnPoint_N + 4 - (i - 2)] = randomColor;
+      nextShapeSegments[nextShapeSpawnPoint + 4 - (i - 2)] = randomColor;
     }
+  }
+
+  visualeNextShape();
+}
+
+function clearNextShapeBoard() {
+  for (i = 0; i < 16; i++) {
+    nextShapeSegments[i] = null;
   }
   visualeNextShape();
 }
 
-//Creat board
 let board = [];
+
 for (i = 0; i < 240; i++) {
-  let cube = document.createElement("div");
+  let cell = document.createElement("div");
   const tetrisBoard = document.getElementById("tetrisBoard");
 
-  cube.className = "cube";
-  cube.innerText = i;
-  tetrisBoard.appendChild(cube);
+  cell.className = "cell";
+  cell.innerText = i; //TESTING
+
+  tetrisBoard.appendChild(cell);
   board.unshift(null);
 }
 
-//Creating shapes
-
 function createI() {
   for (i = 0; i < 4; i++) {
-    board[spawnPoint + 10 * i] = randomColor;
+    board[boardSpawnPoint + 10 * i] = randomColor;
   }
   visualeBoard();
   randomColor = Math.floor(Math.random() * 4) + 1;
@@ -133,9 +148,9 @@ function createI() {
 function createJ() {
   for (i = 0; i < 4; i++) {
     if (i <= 2) {
-      board[spawnPoint + 10 * i] = randomColor;
+      board[boardSpawnPoint + 10 * i] = randomColor;
     } else {
-      board[spawnPoint + 10 * (i - 1) - 1] = randomColor;
+      board[boardSpawnPoint + 10 * (i - 1) - 1] = randomColor;
     }
   }
   visualeBoard();
@@ -145,9 +160,9 @@ function createJ() {
 function createL() {
   for (i = 0; i < 4; i++) {
     if (i <= 2) {
-      board[spawnPoint + 10 * i] = randomColor;
+      board[boardSpawnPoint + 10 * i] = randomColor;
     } else {
-      board[spawnPoint + 10 * (i - 1) + 1] = randomColor;
+      board[boardSpawnPoint + 10 * (i - 1) + 1] = randomColor;
     }
   }
   visualeBoard();
@@ -157,9 +172,9 @@ function createL() {
 function createO() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      board[spawnPoint + i] = randomColor;
+      board[boardSpawnPoint + i] = randomColor;
     } else {
-      board[spawnPoint + 10 + (i - 2)] = randomColor;
+      board[boardSpawnPoint + 10 + (i - 2)] = randomColor;
     }
   }
   visualeBoard();
@@ -169,9 +184,9 @@ function createO() {
 function createZ() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      board[spawnPoint + i] = randomColor;
+      board[boardSpawnPoint + i] = randomColor;
     } else {
-      board[spawnPoint + 10 + (i - 2) + 1] = randomColor;
+      board[boardSpawnPoint + 10 + (i - 2) + 1] = randomColor;
     }
   }
   visualeBoard();
@@ -181,9 +196,9 @@ function createZ() {
 function createT() {
   for (i = 0; i < 4; i++) {
     if (i == 0) {
-      board[spawnPoint] = randomColor;
+      board[boardSpawnPoint] = randomColor;
     } else {
-      board[spawnPoint + 8 + i] = randomColor;
+      board[boardSpawnPoint + 8 + i] = randomColor;
     }
   }
   visualeBoard();
@@ -193,31 +208,31 @@ function createT() {
 function createS() {
   for (i = 0; i < 4; i++) {
     if (i <= 1) {
-      board[spawnPoint + i] = randomColor;
+      board[boardSpawnPoint + i] = randomColor;
     } else {
-      board[spawnPoint + 10 - (i - 2)] = randomColor;
+      board[boardSpawnPoint + 10 - (i - 2)] = randomColor;
     }
   }
   visualeBoard();
   randomColor = Math.floor(Math.random() * 4) + 1;
 }
 
-let cubes = document.getElementsByClassName("cube");
+let cells = document.getElementsByClassName("cell");
 
 function visualeBoard() {
   for (i = 0; i < 240; i++) {
     if (board[i] != null) {
       if (board[i] == 1) {
-        cubes[i].style.backgroundColor = "red";
+        cells[i].style.backgroundColor = "red";
       } else if (board[i] == 2) {
-        cubes[i].style.backgroundColor = "green";
+        cells[i].style.backgroundColor = "green";
       } else if (board[i] == 3) {
-        cubes[i].style.backgroundColor = "blue";
+        cells[i].style.backgroundColor = "blue";
       } else if (board[i] == 4) {
-        cubes[i].style.backgroundColor = "yellow";
+        cells[i].style.backgroundColor = "yellow";
       }
     } else if (board[i] == null) {
-      cubes[i].style.backgroundColor = "gray";
+      cells[i].style.backgroundColor = "gray";
     }
   }
 }
@@ -242,35 +257,28 @@ function createRandomShape() {
   }
 
   randomShape = Math.floor(Math.random() * 7) + 1;
-  syncOrderOfShapes();
+  showNextShape();
   visualeNextShape();
 }
 
 createRandomShape();
 
-function clearNextShapeBoard() {
-  for (i = 0; i < 16; i++) {
-    nextShapeBoard[i] = null;
-  }
-  visualeNextShape();
-}
-
-function syncOrderOfShapes() {
+function showNextShape() {
   clearNextShapeBoard();
   if (randomShape == 1) {
-    createI_N();
+    nextI();
   } else if (randomShape == 2) {
-    createJ_N();
+    nextJ();
   } else if (randomShape == 3) {
-    createL_N();
+    nextN();
   } else if (randomShape == 4) {
-    createO_N();
+    nextO();
   } else if (randomShape == 5) {
-    createS_N();
+    nextS();
   } else if (randomShape == 6) {
-    createT_N();
+    nextT();
   } else {
-    createZ_N();
+    nextZ();
   }
 }
 
@@ -280,8 +288,39 @@ for (i = 0; i < 240; i++) {
   takenFields[i] = false;
 }
 
+function stopAllCurrentBlocks() {
+  for (i = 0; i < 240; i++) {
+    if (board[i] != null) {
+      takenFields[i] = true;
+    }
+  }
+}
+
 function applyGravity() {
   for (i = 240; i > 0; i--) {
+    if (i >= 230 && board[i] != null && takenFields[i] == false) {
+      stopAllCurrentBlocks();
+      createRandomShape();
+    }
+
+    if (
+      board[i] != null &&
+      takenFields[i + 10] == true &&
+      takenFields[i] == false
+    ) {
+      stopAllCurrentBlocks();
+      createRandomShape();
+    }
+
+    if (
+      board[(i - 239) * -1] != null &&
+      takenFields[(i - 239) * -1 + 10] == true &&
+      takenFields[(i - 239) * -1] == false
+    ) {
+      stopAllCurrentBlocks();
+      createRandomShape();
+    }
+
     if (
       board[i] != null &&
       board[i + 10] == null &&
@@ -291,11 +330,9 @@ function applyGravity() {
       board[i + 10] = board[i];
       board[i] = null;
     }
-    if (i >= 230 && board[i] != null) {
-      takenFields[i] = true;
-    }
   }
+
   visualeBoard();
 }
 
-setInterval(applyGravity, 900);
+setInterval(applyGravity, 800);
